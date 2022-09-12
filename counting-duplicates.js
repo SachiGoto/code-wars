@@ -22,3 +22,10 @@ function duplicateCount(text){
       list[item] > 1?count++:count;}
       return (count>0)?count:0;
     }
+
+
+    // function duplicateCount(text){
+    //     return text.toLowerCase().split('').filter(function(val, i, arr){
+    //       return arr.indexOf(val) !== i && arr.lastIndexOf(val) === i;
+    //     }).length;
+    //   }
