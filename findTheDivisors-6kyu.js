@@ -7,10 +7,7 @@
 
 
 function divisors(integer) {
-    let arr =[];
-    for(let i=2; i<integer+1; i++){
-         if(integer%i===0 && integer !== i){
-           arr.push(i)}}
-    if(arr.length == 0) return `${integer} is prime`
-    return arr;
-  };
+    for( var arr=[], i=2; i<integer+1; i++){
+         if(integer%i===0 && integer !== i) arr.push(i)}
+    return (arr.length == 0)? `${integer} is prime`: arr;
+};
