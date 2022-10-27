@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+
+    <script>
+
+      const inventors = [{first: 'Johannes', last:'Kepler', year:1571, passed:1630},
+                      {first: 'Reicchold', last:'Jack', year:1473, passed:1543},
+                      {first: 'Sam', last:'Smith', year:1858, passed:1947},
+    ]
+
+      
+// ------------------------------------------------------------------------------
+// 1. user a filter method and get people who are born in the 1500's
+
+        // filter pass a function and loop through every single item in an array // 
+
+         const fifteen1 = inventors.filter(function(inventor){
+             if(inventor.year >= 1500 && inventor.year <1600){
+                console.table(inventor);
+                return true;
+                // no need to return false 
+                
+             }
+         })
+
+         console.table(fifteen1);
+
+          const fifteen = inventors.filter(inventor =>(inventor.year >= 1500 && inventor.year <1600))
+
+          console.table(fifteen);
+
+
+//  ------------------------------------------------------------------------------
+// 2. array of inventors' first name and last name
+
+        //   const fullNames = inventors.map(inventor => inventor.first + inventor.last);
+
+        //   console.log(fullNames);
+
+        const fullNames = inventors.map(inventor => `${inventor.first} ${inventor.last}`);
+
+console.log(fullNames);
+
+
+// ------------------------------------------------------------------------------
+// 3. sort the inventors by birthdate, oldest to youngest
+// 1 - move down -1 move up
+
+
+
+const ordered = inventors.sort(function(firstperson, secondperson){
+    if(firstperson.year > secondperson.year){
+        return 1;}else{
+            return -1;
+        }
+    
+});
+console.log("oldest to youngest");
+console.table(ordered);
+
+const ordered2 = inventors.sort((a,b)=> a.year > b.year ? 1 : -1);
+
+console.log("older to youngest used arrow function")
+console.table(ordered2);
+
+
+
+
+
+// ------------------------------------------------------------------------------
+// 4. How many years did all the inventors live?
+
+var totalYears1 = 0;
+for(var i = 0; i < inventors.length; i++){
+  totalYears1 += inventors[i].year;
+
+}
+
+console.log("Total years is " + totalYears1);
+
+
+const totalYears = inventors.reduce((total, inventor)=>{
+    return total + (inventor.passed - inventor.year);
+}, 0);
+
+// need to put 0 to set the first around to be 0. Otherwise, first round will be undefined. 
+
+
+console.log(totalYears);
+
+
+
+// ------------------------------------------------------------------------------
+// 5. Sort the inventors by years lived
+
+const oldest = inventors.sort(function(a,b){
+    const lastGuy = a.passed - a.year;
+    const nextGuy = b.passed - b.year;
+
+    // if(lastGuy > nextGuy){
+    //     return -1
+    // }else{
+    //     return 1
+    // }
+    return lastGuy > nextGuy ? -1 : 1;
+    
+})
+
+console.log("inventors lived longest to shortest")
+console.table(oldest);
+
+
+
+// ------------------------------------------------------------------------------
+// 6. Create a list of boulvards in Paris that contain 'de' anywhere in the name. 
+
+
+
+// https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+
+// const category = document.querySelector('.mw-category');
+
+// // two ways to convert nodelist to an array
+// 1.
+// const links = Array.from(category.querySelectorAll('a'));
+
+// 2.
+// const links1 = [...category.querySelectorAll('a')];
+
+// console.log(links1);
+
+// const de = links
+//             .map(link => link.textContent)
+//             .filter(streetName => streetName.includes('de'));
+//             // returning streetname that includes 'de'; 
+// // returns only text content 
+
+//  console.table(de);
+
+
+
+
+// ------------------------------------------------------------------------------
+// 7. Sorting people alphabetically by last name
+
+
+// 1   move down 
+// -1  move up
+
+
+const people=[ 'Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick', 'Beecher, Henry'];
+
+
+const alpha = people.sort(function(lastOne, nextOne){
+    // const parts = lastOne.split(', ');
+    // console.log("parts " + parts);
+    // split on comma and space. It gets two element in an array. 
+
+    const [alast, afirst] = lastOne.split(', ');
+    console.log("alast and afirst " + alast, afirst);
+
+    const [blast, bfirst] = nextOne.split(', ');
+    console.log("blast and bfirst " + blast, afirst);
+
+    return alast > blast ? 1: -1;
+
+    // instead of returning as an array, return as a variable
+    // console.log("last one " + nextOne)
+  
+
+});
+
+console.log("alpha", alpha);
+       
+
+
+
+
+
+
+
+// ------------------------------------------------------------------------------
+// 8. Sum up the instances of each of these
+   const data=['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'car', 'van', 'car', 'truck'];
+
+
+   const transportation = data.reduce(function(obj, item){
+         
+    // console.log(item);
+    if(!obj[item]){
+    obj[item]=0;
+   }obj[item]++;
+    return obj;
+
+   },{})
+
+   console.log(transportation);
+   // start with empty object so add {} at the end. 
+
+// const transportation = data.reduce(function(obj, item){
+//     if(!obj[item]){
+//     console.log(item);
+//     obj[item]=0;
+//     }
+//     obj[item]++;
+//     return obj;
+
+// },{});
+     
+
+
+
+
+    </script>
+    
+</body>
+</html>
