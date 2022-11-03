@@ -16,3 +16,11 @@
 // I have also created other katas. Take a look if you enjoyed this kata!
 
 
+function dontGiveMeFive(start, end){ 
+    let count=0;
+    for(let startNum=start; startNum<=end; startNum++){
+     let strNum = "" + startNum;
+        !strNum.split("").includes("5")?count++:count 
+    }
+    return count
+  }
