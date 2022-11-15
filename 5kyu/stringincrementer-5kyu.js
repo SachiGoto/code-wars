@@ -19,67 +19,47 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
 function incrementString (strng) {
 
-    let strArr = [];
-    let arrStrng = [...strng].reverse();
-            
-    let numArr =[];
-    let breakpoint = [...strng].reverse().find(x=> isNaN(x));
-    breakpoint = [...strng].reverse().indexOf(breakpoint);
-    console.log("breakpoint " , breakpoint);
-    if(breakpoint === -1){
-      strArr = [];
-      numArr =[...strng]
-    }
-    else if(breakpoint === 0){
-       numArr = [];
-       strArr = [...strng].join("");
-    }else{
-       numArr = [...strng].slice(-Math.abs(breakpoint)).join("");
-       strArr = [...strng].splice(0, ([...strng].length - breakpoint)).join("");
-    }
+  let arrStrng = [...strng].reverse(),
+      strArr = [], numArr =[],
+      // finding the first index that is a number in the string
+       breakpoint = [...strng].reverse().find(x=> isNaN(x));
+       breakpoint = [...strng].reverse().indexOf(breakpoint);
+
+
+// if breakpoin is -1, that means there are only numbers in the string
+  if(breakpoint === -1){
+    strArr = [];
+    numArr =[...strng].join("")
+  }
+  
+  // if breakpoin is 0, that means there are no numbers
+  else if(breakpoint === 0){
+     numArr = [];
+     strArr = [...strng].join("");
+  }
+  
+  else{
+     numArr = [...strng].slice(-Math.abs(breakpoint)).join("");
+     strArr = [...strng].splice(0, ([...strng].length - breakpoint)).join("");
+  }
+  
+
+if(numArr.length === 0) return strArr + "1";
+  
+else if(numArr.length > 0 && strArr.length == 0){
+  let num = +numArr +1;
+  num =  num.toString().padStart(numArr.length, '0');
+  return num
+  }
+  
+else{
+  let num = +numArr+1;
+  num =  num.toString().padStart(numArr.length, '0');
+  strng = strArr + num;
+  return strng;
     
+  }
   
-   
-  
-  
-  
-  console.log("strArr ", strArr )
-    console.log("numArr ", numArr)
-  if(numArr.length === 0){
-    console.log("strArr + 1 " , strArr + 1);
-    return strArr + "1";
-  }else if(numArr.length > 0 && strArr.length == 0){
-    console.log("hello")
-      let num = +numArr+1;
-    num =  num.toString().padStart(numArr.length, '0');
-    return num
-  ;  
-    }else{
-      
-      //   newArr = +newArr + 1; 
-    let num = +numArr+1;
-    console.log("Hi")
-    console.log("newArr", num.toString().padStart(numArr.length, '0'));
-    num =  num.toString().padStart(numArr.length, '0');
-    strng = strArr + num;
-  
-    return strng;
-      
-    }
-    
-  
-  
-    
-    }
+  }
