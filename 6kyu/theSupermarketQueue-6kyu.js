@@ -14,31 +14,39 @@
 
 
 
-
 function queueTime(customers, n) {
-    //TODO
-    console.log(n)
-    console.log(customers)
-    
-    let till1 =[];
-    let till2 =[];
-    
-    if(customers.length ===0){
-      return 0
-    }
-    else if(n===1){
-       let sum = customers.reduce((x,y)=> x+y,0)
-       return sum
+
+   if(customers.length ===0) return 0
+   
+   else if(n==1)return customers.reduce((x,y)=> x+y,0)
       
-    }else if(n===2){
-       let sortedArr = customers.sort((x,y)=> x>y?-1:1)
+   else if(n>=2 && n<customers.length){
+     let tills =[];
+     let numOfCustomers = customers.length; 
+     
+     // the inial tills array is for assigning one customer on each till
+       for(let i=0; i<n; i++){
+          tills.push(customers[i])
+          numOfCustomers--;
+        }
+     
+     // keep track of each element in an customer array
+      let counter = n;
+      while(numOfCustomers >0){
+       // new cusomer is added to the till that has the smallest number 
+       let findTheSmallest =  tills.reduce((a, b) => Math.min(a, b))
+       let findIndex = tills.indexOf(findTheSmallest)
+        tills[findIndex] += customers[counter]
        
-       for(let i =0; i< sortedArr.length ; i++){
-            let largerNumber = sortedArr.length -1
-            till1.push(sortedArr[sortedArr.length + largerNumber]);
-            till2.push()
-       }
-    }
-    
-    
-  }
+        numOfCustomers--
+        counter++
+ 
+      }
+      
+     return tills.reduce((x,y)=>Math.max(x,y));
+   
+     
+   }else return customers.reduce((x,y)=> Math.max(x,y))
+     
+ 
+ }
