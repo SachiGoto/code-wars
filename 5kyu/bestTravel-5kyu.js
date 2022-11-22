@@ -25,76 +25,33 @@
 
 
 
-
 function chooseBestSum(t, k, ls) {
-    console.log(t);
-    console.log("number of cities " , k);
-    console.log(ls);
-   
-   let arr =[];
-   
-   let count =0;
-   
-   if(k ===1){
-      return ls.reduce((x,y)=> Math.max(x,y));
-     
-   } else if(k === 2){
-     console.log("Hello")
-     for(let i=0; i<ls.length; i++){
-       let temp = 0;
-           for(let j= 1; j<ls.length; j++){
-             temp = ls[i] + ls[j];
-             arr.push(temp);
-           }
-     }
-     
-     
-   }else if(k ===3){
-     
-      while(count<k){
-     for(let i=count+1; i<ls.length; i++){
-       let temp = 0;
-           for(let j= i+1; j<ls.length; j++){
-             temp = ls[count] + ls[i] + ls[j];
-             arr.push(temp);
-           }
-   
-     }
-     count++
-   }
-     
-     
-     
-   }else if( k === 4){
-      
-       
-      
-   }
-   
+  let totalArr = [];  
+
+    
+  function rec(distance,cityArr, numOfCities) {
+
+//     console.log(distance, cityArr,numOfCities)
+    if (numOfCities == 0) {
+      totalArr.push(distance);
+//        console.log("totalArr ", totalArr)
+    } 
+    else {
+      for (let i = 0; i < cityArr.length; i++) {
+        rec(distance+cityArr[i], cityArr.slice(i+1), numOfCities-1);
+//         console.log(distance+cityArr[i])
+      }
+    }
+  }
+
+  rec(0, ls, k);
   
-   
-   
-   
-   console.log("arr is " ,arr)
-   
- 
-   let filterArr = arr.filter(x=> x<=t);
- //   console.log(arr);
- //     console.log(filterArr);
-   
-   if(filterArr.length === 0){
-     return null;
-   }else{
-     
-   let sortedArr = filterArr.sort((x,y)=> x>y?-1:1);
-   console.log(sortedArr)
-     console.log(sortedArr[0])
-   return sortedArr[0]
-     
-     
-   }
+    
+  let result = totalArr.sort( (a, b) => a>b?-1:1).find( a => a <= t);
+  return typeof result === "undefined" ? null : result;
+}
    
  
    
      
- }
+ 

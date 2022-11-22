@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+function chooseBestSum(t, k, ls) {
+  let totalArr = [];  
+
+    
+  function rec(distance,cityArr, numOfCities) {
+
+//     console.log(distance, cityArr,numOfCities)
+    if (numOfCities == 0) {
+      totalArr.push(distance);
+//        console.log("totalArr ", totalArr)
+    } 
+    else {
+      for (let i = 0; i < cityArr.length; i++) {
+        rec(distance+cityArr[i], cityArr.slice(i+1), numOfCities-1);
+//         console.log(distance+cityArr[i])
+      }
+    }
+  }
+
+  rec(0, ls, k);
+  
+    
+  let result = totalArr.sort( (a, b) => a>b?-1:1).find( a => a <= t);
+  return typeof result === "undefined" ? null : result;
+}
+    
+
+      
+    </script>
+</body>
+</html>
