@@ -10,34 +10,57 @@
     
 
     <script>
-        let arr =[1,2,3,4,5]
-        let n = 4;
-        let track = 0;
-        let temp=[];
+
+let needs = {flour: 500, sugar: 200, eggs: 1};
+
+ let has = {flour: 1200, sugar: 1200, eggs: 5, milk: 200}; 
+
+//  const cakes = (needs, has) => Math.min(
+//   ...Object.keys(needs).map(key => Math.floor(has[key] / needs[key] || 0))
+// )
+
+console.log(Object.keys(needs))
+
+
+
+let test = [];
+console.log(has["flour"])
+
+
+test = Object.keys(needs).map(key => Math.floor(has[key] / needs[key] || 0))
+
+console.log(test)
+
+
+
+        // let arr =[1,2,3,4,5]
+        // let n = 4;
+        // let track = 0;
+        // let temp=[];
 
 
        
 
-        while(track<=n){
-               temp.push(arr[track])
+        // while(track<=n){
+        //        temp.push(arr[track])
               
-               //1
-               if(track === n){
-                for(let i = track; i<arr.length; i++){
-                    temp.push(arr[i])
-                    track++
-                }
+        //        //1
+        //        if(track === n){
+        //         for(let i = track; i<arr.length; i++){
+        //             temp.push(arr[i])
+        //             track++
+        //         }
 
-                temp=[];
+        //         temp=[];
 
-               }
+        //        }
           
-               track++
-               console.log(temp)
+        //        track++
+        //        console.log(temp)
                
              
 
-        }
+        // }
 
     
 
