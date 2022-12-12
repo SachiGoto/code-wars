@@ -12,3 +12,34 @@
 // LCS( "132535365" , "123456789" ) => returns "12356"
 
 
+function LCS(x, y) {
+  
+    console.log(x,y)
+    if(x.includes(y)){
+      return y
+    }else{
+    
+    let xArr = [...x].slice()  ;
+    let result = '';
+      let counter = 0;
+   while(counter < xArr.length){
+      if(xArr.includes(y.charAt(counter))){
+        if(counter <= y.indexOf(y.charAt(counter))){
+        
+          console.log("counter is ", counter);
+         
+           result += y.charAt(counter)
+           xArr.splice(0,counter+1);
+           console.log("xArr is ", xArr);
+          counter = 0;
+           }
+       
+       
+         }
+       counter++
+    
+      }return result
+
+    }
+
+}
