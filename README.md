@@ -17,7 +17,7 @@ It provides codeing challenges in multiple different lanugages. I specialize in 
 ### JavaScript:
 
 
-* [Valid Parentheses](code-wars/5kyu/valid-parentheses-5kyu.js)
+* [Valid Parentheses](./code-wars/5kyu/valid-parentheses-5kyu.js)
 * [Haversine Distance](js/haversine.js) - 3 kyu
 * [Battleship field validator](js/battleship_validator.js) - 3 kyu
 * [Did you mean?](js/did_you_mean.js) - 3 kyu
