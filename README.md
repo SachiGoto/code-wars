@@ -38,3 +38,7 @@ It provides codeing challenges in multiple different lanugages. I specialize in 
 * [Array.diff](/6kyu/array.diff-6kyu.js) - 6 kyu
 * [Does my number look big in this?](/6kyu/doesMyNumberLookBigInThis-6kyu.js) - 6 kyu
 
+7kyu
+[How Many Unique Consonants?](/7kyu/howManyUniqueConsonants-7kyu.js) - 7 kyu
+
+
