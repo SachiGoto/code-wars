@@ -16,3 +16,12 @@ function numberJoy(n) {
     let reversedSum = sum.toString().split('').reverse().join('')
     return ((n%sum) === 0 && sum * reversedSum === n  )? true: false;
 }
+
+
+function sayMyName(fullName) {
+    console.log(`You acting kind of shady, ain't callin' me ${fullName}`);
+  }
+  
+  sayMyName("Beyoncé", "Knowles");
+
+  
