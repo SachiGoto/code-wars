@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+
+<script>
+// arrow function looks like a varibale
+// not as apparent as function 
+// It doesn't have HOISTING behaviour so it MUST be defined before calling it. 
+
+const numbers =[ 1,20,400,7000];
+
+
+
+// function doubleNubmers(numbers){
+   
+//     return numbers.map(n=> n*2)
+// }
+
+const doubleNubmers = (numbers) =>{
+    return numbers.map(n=> n*2)
+}
+
+const doubled = doubleNubmers(numbers);
+
+
+
+
+// main part where arrow function shoudl be used is use it anonymous/ callback function 
+
+
+numbers.map(n=>n*2);
+
+
+// 
+
+// regular function 
+document.addEventListener('click', function(e) {
+      console.log(this, e.target)
+      // this points to the element what was clicked on 
+})
+
+// arrow function 
+document.addEventListener('click', (e)=>{
+    console.log(this, e.target)
+    // this points to window object
+    // this targets to the outside of the element you clicked on. 
+})
+
+
+
+const person ={
+    fistName: 'Kyle',
+    lastName:'Cook',
+    printName:()=>{
+        console.log(`${this.firstName} ${this.lastName}`)
+        console.log(this)
+    },
+}
+
+person.printName();
+
+// this case, this points to the window object, window object doesn't have the properties first name and last name so it returnes undefiend
+
+
+const person2 ={
+    fistName: 'Kyle',
+    lastName:'Cook',
+    printName: function(){
+        console.log(`${this.firstName} ${this.lastName}`)
+        console.log(this)
+    },
+    // more succint way 
+    // printName(){
+    //     console.log(`${this.firstName} ${this.lastName}`)
+    //     console.log(this)
+    // }
+}
+
+person2.printName();
+
+// this points to the object that the function was defined. 
+
+</script>
+
+
+</body>
+</html>
