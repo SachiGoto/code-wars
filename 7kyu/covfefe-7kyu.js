@@ -15,8 +15,7 @@ function covfefe(str){
 
  
     let strArr = str.split(" ")
-    let result = strArr.map(word=>word==='coverage'?'covfefe':word );
-  
+    let result = strArr.map(word=>word==='coverage'?'covfefe':word )
     if(!strArr.includes('coverage')) result.push('covfefe')
   
     return result.join(" ")
