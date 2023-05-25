@@ -57,3 +57,13 @@ decodeMorse = function(morseCode){
   return result.join(" ")
 
 }
+
+
+// other solution
+decodeMorse = function(morseCode){
+  return morseCode.trim().split('   ').map(function(word) {
+    return word.split(' ').map(function(letter) {
+      return MORSE_CODE[letter];
+    }).join('');
+  }).join(' ');
+}
